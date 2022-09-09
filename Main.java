@@ -1,38 +1,44 @@
 import java.util.Arrays;
+import java.util.Scanner;
 public class Main {
-    static boolean isFind(int[] arr, int value) {
+        public static void main(String[] args)
+        {
+            int size, temp=0;
+            Scanner tara = new Scanner(System.in);
+            System.out.print("Sıralamak istediğiniz boyutu giriniz : ");
+            size = tara.nextInt();
 
-            for (int i: arr){
-                if (i==value){
-                    return true;
+            if(size>0)
+            {
+                int[] arr = new int[size];
+                for(int i=0;i<size;i++)
+                {
+                    System.out.printf("%d. elemanı giriniz:",i+1);
+                    arr[i]= tara.nextInt();
                 }
-            }
-            return false;
 
+                System.out.println("Sıralanmamış dizi: "+Arrays.toString(arr));
 
-        }
-        public static void main(String[] args) {
-
-            int [] list = {3,5,6,1,2,6,3,6,6,2,8,8};
-            int [] ciftsayi = new int[list.length];
-            int baslangic=0;
-
-            for (int i = 0;i< list.length;i++){
-
-                for (int j= 0 ;j<list.length;j++){
-
-                    if ((i != j) && (list[i] == list[j])) {
-                        if(!isFind(ciftsayi,list[i])){
-                            ciftsayi[baslangic++] = list[i];
-                            break;
+                for(int i=0;i<size;i++)
+                {
+                    for(int j=i+1;j<size;j++)
+                    {
+                        if(arr[i] > arr[j])
+                        {
+                            temp = arr[i];
+                            arr[i] = arr[j];
+                            arr[j] = temp;
                         }
                     }
                 }
+
+                System.out.println("Sıralanmış dizi: "+Arrays.toString(arr));
             }
-            for (int value: ciftsayi) {
-                if ((value!= 0) && (value%2!=1)) {
-                    System.out.println(value);
-                }
+
+            else
+            {
+                System.out.print("Hatalı giriş.");
+                System.exit(0);
             }
 
         }

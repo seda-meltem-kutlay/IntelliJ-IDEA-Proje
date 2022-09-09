@@ -1,44 +1,32 @@
 import java.util.Arrays;
-import java.util.Scanner;
 public class Main {
-        public static void main(String[] args)
-        {
-            int size, temp=0;
-            Scanner tara = new Scanner(System.in);
-            System.out.print("Sıralamak istediğiniz boyutu giriniz : ");
-            size = tara.nextInt();
+    public static void main(String[] args) {
+        int[] seri = {9, 8, 87, 78, 78, 6, 6, 56, 5, 54, 3, 44, 55, 44, 2, 44, 67, 76, 9, 9};
+        int[] frekans = new int[seri.length];
 
-            if(size>0)
-            {
-                int[] arr = new int[size];
-                for(int i=0;i<size;i++)
-                {
-                    System.out.printf("%d. elemanı giriniz:",i+1);
-                    arr[i]= tara.nextInt();
+        for (int i = 0; i < seri.length; i++)
+            frekans[i] = 1;
+
+        for (int i = 0; i < seri.length; i++) {
+            for (int j = 0; j < seri.length; j++) {
+                if ((i != j) && (seri[i] == seri[j])) {
+                    frekans[i]++;
+
+
                 }
-
-                System.out.println("Sıralanmamış dizi: "+Arrays.toString(arr));
-
-                for(int i=0;i<size;i++)
-                {
-                    for(int j=i+1;j<size;j++)
-                    {
-                        if(arr[i] > arr[j])
-                        {
-                            temp = arr[i];
-                            arr[i] = arr[j];
-                            arr[j] = temp;
-                        }
+            }
+                for (int j = 0; j < seri.length; j++) {
+                    if ((i != j) && (seri[i] == seri[j])) {
+                        seri[j] = 0;
                     }
                 }
-
-                System.out.println("Sıralanmış dizi: "+Arrays.toString(arr));
             }
-
-            else
-            {
-                System.out.print("Hatalı giriş.");
-                System.exit(0);
+            System.out.println(Arrays.toString(seri));
+            for (int i = 0; i < seri.length; i++) {
+                if (frekans[i] > 1) {
+                    if (seri[i] != 0)
+                        System.out.println(seri[i] + "\tsayısı\t" +  frekans[i] + "  kere tekrarlandı.");
+                }
             }
 
         }

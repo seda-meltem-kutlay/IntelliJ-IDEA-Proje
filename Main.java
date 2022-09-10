@@ -1,33 +1,39 @@
-import java.util.Arrays;
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-        int[] seri = {9, 8, 87, 78, 78, 6, 6, 56, 5, 54, 3, 44, 55, 44, 2, 44, 67, 76, 9, 9};
-        int[] frekans = new int[seri.length];
+        Scanner scan = new Scanner(System.in);
+        System.out.print("matris satırı : ");
+        int lenght = scan.nextInt();
+        System.out.print("matris sütunu : ");
+        int boy = scan.nextInt();
+        System.out.println("matris elemanlarını girin : ");
 
-        for (int i = 0; i < seri.length; i++)
-            frekans[i] = 1;
+        int[][] matris = new int[lenght][boy];
 
-        for (int i = 0; i < seri.length; i++) {
-            for (int j = 0; j < seri.length; j++) {
-                if ((i != j) && (seri[i] == seri[j])) {
-                    frekans[i]++;
-
-
-                }
-            }
-                for (int j = 0; j < seri.length; j++) {
-                    if ((i != j) && (seri[i] == seri[j])) {
-                        seri[j] = 0;
-                    }
-                }
-            }
-            System.out.println(Arrays.toString(seri));
-            for (int i = 0; i < seri.length; i++) {
-                if (frekans[i] > 1) {
-                    if (seri[i] != 0)
-                        System.out.println(seri[i] + "\tsayısı\t" +  frekans[i] + "  kere tekrarlandı.");
-                }
-            }
+        for (int i = 0; i < matris.length; i++) {
+            for (int j = 0; j < matris[i].length; j++)
+                matris[i][j] = scan.nextInt();
 
         }
+        System.out.println("========");
+        System.out.println("matris : ");
+        System.out.println(" ");
+
+        for (int i = 0; i < matris.length; i++) {
+            for (int j = 0; j < matris[i].length; j++)
+                System.out.print(matris[i][j] + "   ");
+            System.out.println();
+        }
+        System.out.println("---------");
+        System.out.println("matrisin transpozu : ");
+        System.out.println();
+        for (int j = 0; j < matris[0].length; j++) {
+            for (int i = 0; i < matris.length; i++) {
+                System.out.print(matris[i][j] + "   ");
+            }
+            System.out.println();
+        }
+        scan.close();
+
     }
+}
